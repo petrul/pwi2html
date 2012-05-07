@@ -1,4 +1,3 @@
 pwi2html
 ========
-
-Converter from pwi WindowsCE handheld excuse for an editor, to SXW OpenOffice
+Converter for pwi files on Windows CE handhelds PDAs to OpenOffice Writer sxw.

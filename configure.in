@@ -1,0 +1,29 @@
+AC_INIT(configure.in)
+
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(pwi2html, 0.1)
+
+AC_LANG_CPLUSPLUS
+AC_PROG_CXX
+AM_PROG_LIBTOOL
+
+CHECK_ZLIB
+AM_LIBXML(, exit)
+
+#KDE_CHECK_QT_DIRECT
+AC_PATH_QT_1_3
+
+# Dummy conditional just to make automake-1.4 happy.
+# We need an always-false condition in docs/Makefile.am.
+AM_CONDITIONAL(LIBXMLCPP_FALSE,[false])
+
+CXXFLAGS="$CXXFLAGS $LIBXML_CFLAGS $QT_INCLUDES"
+LIBS="$LIBS $LIBXML_LIBS $QT_LDFLAGS"
+
+all_includes=$CXXFLAGS
+all_libraries=-lqt-mt
+
+AC_SUBST(all_includes)
+AC_SUBST(all_libraries)
+
+AC_OUTPUT(Makefile src/Makefile)
